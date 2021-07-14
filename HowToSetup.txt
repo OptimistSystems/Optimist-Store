@@ -1,0 +1,27 @@
+sudo apt install apache2 php7.4 php7.4-mysql mariadb
+sudo systemctl enable apache2
+systemctl enable mariadb
+su www-data
+cd /var/www/html
+wget https://ja.wordpress.org/wordpress-5.3.1-ja.tar.gz
+tar xzvf wordpress-5.3.1-ja.tar.gz
+rm wordpress-5.3.1-ja.tar.gz
+mv wordpress store
+sudo mariadb
+[Enter www-data's password]
+CREATE DATABASE wordpress DEFAULT CHARACTER SET utf8;
+GRANT ALL ON wordpress.* TO wordpress@localhost IDENTIFIED BY '[PASSWORD]';
+FLUSH PRIVILEGES;
+
+Access to 10.122.24.X/store
+set up blow account.
+username: Administrator 
+password: HE4sW2QSXm6g39W
+
+vim /var/www/html/store/wp-config.php
+Add blow code.
+define( 'AUTOMATIC_UPDATER_DISABLED', true ); // disable autoupdate
+
+Login to 10.122.24.X/store/wp-admin/
+
+Done.
